@@ -1,0 +1,81 @@
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class GradeCalculator {
+
+	// mark variables
+	private double test, assignment, lab, midterm, finalExam;
+	private double theory, practical, finalGrade;
+	private double gradeInput;
+
+	DecimalFormat df = new DecimalFormat("#.##");
+	Scanner input = new Scanner(System.in);
+	
+	// default constructor to print title
+	public GradeCalculator() {
+		System.out.println("Welcome to the CST8101 Final Mark Calculator\n");
+	}
+	
+	// input marks
+	public void getMarks() {
+		System.out.print("Enter your Lab Assignments mark out of 10: ");
+		gradeInput = input.nextDouble();
+			
+		System.out.print("Enter your Assignment Activities mark out of 20: ");
+		assignment = input.nextDouble();
+
+		System.out.print("Enter your Test / Quizzes Marks out of 20: ");
+		test = input.nextDouble();
+
+		System.out.print("Enter your Midterm mark out of 20: ");
+		midterm = input.nextDouble();
+
+		System.out.print("Enter your Final Assessment (Exam) mark out of 30: ");
+		finalExam = input.nextDouble();
+
+		input.close();
+	}
+	
+	// calculate grades
+	public void calculateGrades() {
+		theory = (test + midterm + finalExam) * 100 / 70;
+		practical = (assignment + lab) * 100 / 30;
+			if (theory < 50) 
+			finalGrade=theory;
+			else if (practical < 50) 
+			finalGrade=practical;
+			else finalGrade = test + assignment + lab + finalExam + midterm;		
+	}
+
+	// display grades
+	public void displayGrades() {
+		System.out.println("\nTheory Grade: " + df.format(theory) + "%");
+		System.out.println("Practical Grade: " + df.format(practical) + "%");
+		System.out.println("Final Grade: " + df.format(finalGrade) + "%\r");
+			
+			if (finalGrade >=90) {
+			System.out.println("A+\n"); }
+		else {
+			if (finalGrade >=85)
+				System.out.println("A"); 
+		else if (finalGrade >=80) 
+				System.out.println("A-"); 
+		else if (finalGrade >=77) 
+				System.out.println("B+"); 
+		else if (finalGrade >=73) 
+				System.out.println("B"); 
+		else if (finalGrade >=70) 
+				System.out.println("C+"); 
+		else if (finalGrade >=67) 
+				System.out.println("C"); 
+		else if (finalGrade >=63) 
+				System.out.println("A-"); 
+		else if (finalGrade >=60) 
+				System.out.println("C-"); 
+		else if (finalGrade > 0) 
+				System.out.println("F"); 
+		else if (finalGrade <=0) 
+				System.out.println("FSP"); 
+		}	
+	}
+}
