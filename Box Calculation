@@ -1,0 +1,68 @@
+import java.util.Scanner;	//program uses class Scanner
+
+/**
+ * This program prompts user to enter one side of a square in cm, then displays a menu choice to calculate area, perimeter or volume. 
+ * Calculates perimeter of the square in cm and inches, area of the square in cm and inches and volume of the square in cm and inches.
+ * Author:   Lia Brophy
+ * Date: June 6, 2019
+ * CST8110 Introduction to Computer Programming, Assignment 1
+ */
+
+public class Assign1Menu {
+	
+	public static void main(String[] args) {
+	
+	 	double sideCm, sideIn = 0; // Instance Variables
+					
+		System.out.println("please enter the measurement of one side of the square in centimetres: "); // ask user to enter side of square in cm.
+				
+		Scanner input = new Scanner(System.in); //storing input value
+		sideCm = input.nextDouble();
+		sideIn = sideCm/2.54;
+		
+		System.out.format("the side value of %.3f cm is equivalent to %.3f inches\n", sideCm, sideIn); //display measurement in cm and inches
+		System. out. println();
+		
+		//menu
+		System.out.println("-------------------------"); 
+		System.out.println("1. Compute the area");
+		System.out.println("2. Compute the perimeter");
+		System.out.println("3. Compute the volume");
+    	System.out.println("-------------------------");
+    	
+				//Calculations		
+				double areaCm = (sideCm * sideCm);
+				double areaIn = (sideIn * sideIn);
+				double perimeterCm = (4 * sideCm);
+				double perimeterIn = (4 * sideIn);
+				double volumeCm = (sideCm * sideCm * sideCm);
+				double volumeIn = (sideIn * sideIn * sideIn);
+		
+	
+			int menuChoice;
+			do {
+				
+				System.out.println("Enter your menu choice:");
+				Scanner choice= new Scanner (System.in);
+				menuChoice = choice.nextInt();
+				switch (menuChoice) {
+				
+				case 1:
+					System.out.format("the area of the square is:  %.3f cm or %.3f inches\n", areaCm, areaIn, sideCm, sideIn);
+					System.out.println("-------------------------\n");
+					break;
+					
+				case 2:
+					System.out.format("the perimeter of the square is:  %.3f cm or %.3f inches\n", perimeterCm, perimeterIn, sideCm, sideIn);
+					System.out.println("-------------------------\n");
+					break;
+									
+				case 3:
+					System.out.format("the volume of the cube is %.3f cm is %.3f inches\n", volumeCm, volumeIn, sideCm, sideIn);
+					System.out.println("-------------------------\n");
+					break;
+
+			}
+		} while (true);
+		    }
+		}
